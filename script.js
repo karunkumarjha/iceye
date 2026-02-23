@@ -306,8 +306,8 @@
   function initFeatures3D() {
     const product = $('#features-product');
     if (!product) return;
-    const svg = product.querySelector('.product-svg');
-    if (!svg) return;
+    const img = product.querySelector('.product-img');
+    if (!img) return;
 
     const section = $('#features');
     let isVisible = false;
@@ -326,7 +326,7 @@
       const progress = -rect.top / (rect.height - window.innerHeight);
       const clamped = Math.max(0, Math.min(1, progress));
       const rotateY = clamped * 360;
-      svg.style.transform = `rotateY(${rotateY}deg)`;
+      img.style.transform = `rotateY(${rotateY}deg)`;
     }, { passive: true });
   }
 

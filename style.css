@@ -297,8 +297,8 @@ img, svg {
 /* Morph zone */
 .morph-zone {
   position: relative;
-  width: 160px;
-  height: 340px;
+  width: 200px;
+  height: 300px;
   margin: 2rem auto;
   display: flex;
   align-items: center;
@@ -369,10 +369,18 @@ img, svg {
   100% { filter: drop-shadow(0 8px 24px rgba(0,0,0,0.5)); }
 }
 
-.product-svg {
-  width: 120px;
-  height: auto;
-  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.5));
+.product-img {
+  width: 180px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+  filter: drop-shadow(0 8px 30px rgba(0, 0, 0, 0.6));
+}
+
+.product-img--features {
+  width: 220px;
+  height: 340px;
+  transition: transform 0.1s linear;
 }
 
 .product-spotlight {
@@ -380,8 +388,8 @@ img, svg {
   bottom: -30px;
   left: 50%;
   transform: translateX(-50%);
-  width: 120px;
-  height: 40px;
+  width: 180px;
+  height: 50px;
   background: radial-gradient(ellipse, rgba(245, 240, 232, 0.08) 0%, transparent 70%);
   border-radius: 50%;
   opacity: 0;
@@ -513,8 +521,9 @@ img, svg {
   perspective: 800px;
 }
 
-.features-product .product-svg {
-  width: 140px;
+.features-product .product-img {
+  width: 220px;
+  height: 340px;
   transition: transform 0.1s linear;
 }
 
@@ -1400,12 +1409,18 @@ img, svg {
   }
 
   .morph-zone {
-    width: 120px;
-    height: 260px;
+    width: 140px;
+    height: 220px;
   }
 
-  .product-svg {
-    width: 90px;
+  .product-img {
+    width: 140px;
+    height: 220px;
+  }
+
+  .product-img--features {
+    width: 180px;
+    height: 280px;
   }
 
   .exclamation-morph {
