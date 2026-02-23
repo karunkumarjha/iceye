@@ -373,8 +373,9 @@ img, svg {
   width: 180px;
   height: 280px;
   object-fit: cover;
+  object-position: center 40%;
   border-radius: 12px;
-  filter: drop-shadow(0 8px 30px rgba(0, 0, 0, 0.6));
+  filter: grayscale(1) brightness(1.1) contrast(1.2) drop-shadow(0 8px 30px rgba(0, 0, 0, 0.6));
 }
 
 .product-img--features {

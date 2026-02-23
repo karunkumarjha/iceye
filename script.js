@@ -147,38 +147,32 @@
     const morphZone = $('#morph-zone');
     const exclMorph = $('#exclamation-morph');
     const productHero = $('#product-hero');
-    const heroFeatures = $('#hero-features');
     const solveText = $('#solve-text');
-    const features = $$('.hero-feature');
 
-    // Step 1: Show headline (1s after page load fade)
+    // Step 1: Show headline
     setTimeout(() => {
       if (headline) headline.classList.add('visible');
     }, 300);
 
-    // Step 2: Detach last exclamation mark (after 2.5s)
+    // Step 2: Detach last exclamation mark
     setTimeout(() => {
-      if (lastMark) {
-        lastMark.classList.add('detaching');
-      }
+      if (lastMark) lastMark.classList.add('detaching');
     }, 2500);
 
-    // Step 3: Show morph zone, show exclamation in center (after 3.1s)
+    // Step 3: Show morph zone, show exclamation in center
     setTimeout(() => {
       if (morphZone) morphZone.classList.add('active');
       if (exclMorph) exclMorph.classList.add('visible');
     }, 3100);
 
-    // Step 4: Start morph effect (after 3.5s)
+    // Step 4: Start morph effect
     setTimeout(() => {
       if (exclMorph) exclMorph.classList.add('morphing');
     }, 3500);
 
-    // Step 5: Show product (morph complete at ~5.3s)
+    // Step 5: Show product
     setTimeout(() => {
-      if (productHero) {
-        productHero.classList.add('visible');
-      }
+      if (productHero) productHero.classList.add('visible');
     }, 4800);
 
     // Step 6: Add floating animation
@@ -186,29 +180,18 @@
       if (productHero) productHero.classList.add('floating');
     }, 6000);
 
-    // Step 7: Show feature labels one by one
-    setTimeout(() => {
-      if (heroFeatures) heroFeatures.classList.add('visible');
-      features.forEach((feat, i) => {
-        const delay = parseInt(feat.dataset.delay || 0);
-        setTimeout(() => {
-          feat.classList.add('visible');
-        }, delay);
-      });
-    }, 6500);
-
-    // Step 8: Show solve text
+    // Step 7: Show solve text
     setTimeout(() => {
       if (solveText) solveText.classList.add('visible');
-    }, 8000);
+    }, 6500);
 
-    // Step 9: Begin rotation after all features
+    // Step 8: Begin rotation
     setTimeout(() => {
       if (productHero) {
         productHero.classList.remove('floating');
         productHero.classList.add('rotating');
       }
-    }, 9000);
+    }, 8000);
   }
 
   // ---------- SCROLL-TRIGGERED ANIMATIONS ----------
