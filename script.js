@@ -326,7 +326,7 @@
     state.cart.push({
       id: 'iceye-roll-on',
       name: 'ICEYE Under Eye Roll-On',
-      price: 499,
+      price: 399,
       qty: 1,
       timestamp: Date.now(),
     });
@@ -568,6 +568,95 @@
     }
   }
 
+  // ---------- HERO PARALLAX ----------
+  function initHeroParallax() {
+    const bgImg = $('.hero-bg-img');
+    if (!bgImg || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          const heroHeight = window.innerHeight;
+          if (scrollY < heroHeight) {
+            bgImg.style.transform = `translateY(${scrollY * 0.3}px)`;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  // ---------- 3D TILT ON SHOT CARDS ----------
+  function initShotCardTilt() {
+    if (window.matchMedia('(max-width: 768px)').matches) return;
+
+    $$('.shot-card').forEach((card) => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = `perspective(600px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) scale(1.02)`;
+      }, { passive: true });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(600px) rotateY(0deg) rotateX(0deg) scale(1)';
+      });
+    });
+  }
+
+  // ---------- STAGGERED TESTIMONIAL REVEAL ----------
+  function initTestimonialReveal() {
+    const cards = $$('.testimonial-card');
+    if (cards.length === 0) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const allCards = Array.from(cards);
+          allCards.forEach((card, i) => {
+            setTimeout(() => {
+              card.classList.add('visible');
+            }, i * 120);
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    const track = $('.testimonials-track');
+    if (track) observer.observe(track);
+  }
+
+  // ---------- ANIMATED STOCK COUNTER ----------
+  function initStockAnimation() {
+    const stockEl = $('#stock-count');
+    if (!stockEl) return;
+
+    const targetCount = parseInt(stockEl.textContent);
+    let animated = false;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !animated) {
+          animated = true;
+          let current = targetCount + 20;
+          stockEl.textContent = current;
+          const interval = setInterval(() => {
+            current--;
+            stockEl.textContent = current;
+            if (current <= targetCount) clearInterval(interval);
+          }, 60);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    const cta = $('#cta');
+    if (cta) observer.observe(cta);
+  }
+
   // ---------- INTERACTIVE SOUND ON BUTTONS ----------
   function initButtonSounds() {
     $$('.btn, .nav-btn, .faq-question, .social-link').forEach((el) => {
@@ -591,6 +680,10 @@
     initCTAButtons();
     initAnalytics();
     initButtonSounds();
+    initHeroParallax();
+    initShotCardTilt();
+    initTestimonialReveal();
+    initStockAnimation();
     updateCartBadge();
   }
 
