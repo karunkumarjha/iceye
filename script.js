@@ -251,9 +251,10 @@
     }
   }
 
-  // ---------- EXPERIENCE SECTION: WORD CYCLING ----------
+  // ---------- EXPERIENCE SECTION: WORD + IMAGE CYCLING ----------
   function initExperienceWords() {
     const words = $$('.exp-word');
+    const images = $$('.exp-img');
     if (words.length === 0) return;
 
     const section = $('#experience');
@@ -262,10 +263,13 @@
     let interval = null;
 
     function showNext() {
-      // Fade out current
+      // Fade out current word and image
       if (currentIndex >= 0 && currentIndex < words.length) {
         words[currentIndex].classList.remove('visible');
         words[currentIndex].classList.add('fading');
+      }
+      if (currentIndex >= 0 && currentIndex < images.length) {
+        images[currentIndex].classList.remove('active');
       }
 
       currentIndex = (currentIndex + 1) % words.length;
@@ -273,6 +277,9 @@
       setTimeout(() => {
         words.forEach((w) => w.classList.remove('fading'));
         words[currentIndex].classList.add('visible');
+        if (currentIndex < images.length) {
+          images[currentIndex].classList.add('active');
+        }
       }, 400);
     }
 
@@ -281,13 +288,12 @@
         if (entry.isIntersecting && !cycling) {
           cycling = true;
           showNext();
-          interval = setInterval(showNext, 2000);
+          interval = setInterval(showNext, 2500);
         } else if (!entry.isIntersecting && cycling) {
           cycling = false;
           clearInterval(interval);
-          words.forEach((w) => {
-            w.classList.remove('visible', 'fading');
-          });
+          words.forEach((w) => w.classList.remove('visible', 'fading'));
+          images.forEach((img) => img.classList.remove('active'));
           currentIndex = -1;
         }
       });

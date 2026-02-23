@@ -212,17 +212,14 @@ img, svg {
   z-index: 0;
 }
 
-/* Abstract eye background — replace with real image */
-.hero-bg-eye {
+.hero-bg-img {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse 55% 28% at 50% 48%, transparent 42%, rgba(30, 30, 30, 0.6) 60%, rgba(0, 0, 0, 0.95) 80%),
-    radial-gradient(circle 8vw at 50% 48%, var(--grey-800) 0%, transparent 100%),
-    radial-gradient(circle 3vw at 50% 48%, var(--grey-600) 0%, transparent 100%),
-    radial-gradient(circle 1vw at 50% 48%, var(--grey-400) 0%, transparent 100%),
-    linear-gradient(180deg, var(--black) 0%, var(--grey-900) 40%, var(--grey-900) 60%, var(--black) 100%);
-  filter: contrast(1.1) brightness(0.7);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: brightness(0.35) contrast(1.1);
 }
 
 .hero-vignette {
@@ -594,7 +591,7 @@ img, svg {
 #experience {
   position: relative;
   min-height: 100vh;
-  background: var(--cream);
+  background: var(--black);
   overflow: hidden;
 }
 
@@ -604,42 +601,23 @@ img, svg {
   height: 100vh;
 }
 
-.experience-video {
+.experience-images {
   position: absolute;
   inset: 0;
 }
 
-.video-placeholder {
+.exp-img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  background:
-    linear-gradient(135deg, var(--cream-dark) 0%, var(--cream) 50%, var(--cream-dark) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s var(--ease-smooth);
 }
 
-.video-placeholder-inner {
-  text-align: center;
-  opacity: 0.3;
-}
-
-.video-label {
-  display: block;
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--grey-600);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-
-.video-sublabel {
-  display: block;
-  font-size: 0.8rem;
-  color: var(--grey-500);
-  letter-spacing: 0.1em;
-  margin-top: 0.5rem;
+.exp-img.active {
+  opacity: 1;
 }
 
 .experience-overlay {
@@ -664,11 +642,11 @@ img, svg {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: lowercase;
-  color: var(--grey-900);
+  color: var(--cream);
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s var(--ease-smooth), transform 0.8s var(--ease-smooth);
-  mix-blend-mode: multiply;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.6);
 }
 
 .exp-word.visible {
@@ -708,31 +686,15 @@ img, svg {
   overflow: hidden;
 }
 
-.shot-placeholder {
+.shot-photo {
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, var(--grey-800) 0%, var(--grey-900) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.shot-placeholder--alt {
-  background: linear-gradient(180deg, var(--grey-700) 0%, var(--grey-800) 100%);
-}
-
-.shot-placeholder--dark {
-  background: linear-gradient(180deg, #0d0d0d 0%, var(--black) 100%);
-}
-
-.shot-placeholder .product-svg--shot {
-  width: 80px;
-  opacity: 0.9;
+  object-fit: cover;
   transition: transform 0.8s var(--ease-smooth);
 }
 
-.shot-card:hover .product-svg--shot {
-  transform: scale(1.08) !important;
+.shot-card:hover .shot-photo {
+  transform: scale(1.06);
 }
 
 .shot-reflection {
