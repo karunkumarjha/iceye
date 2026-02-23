@@ -370,17 +370,16 @@ img, svg {
 }
 
 .product-img {
-  width: 180px;
-  height: 280px;
-  object-fit: cover;
-  object-position: center 40%;
-  border-radius: 12px;
-  filter: grayscale(1) brightness(1.1) contrast(1.2) drop-shadow(0 8px 30px rgba(0, 0, 0, 0.6));
+  width: 160px;
+  height: 320px;
+  object-fit: contain;
+  border-radius: 0;
+  filter: drop-shadow(0 8px 30px rgba(0, 0, 0, 0.6));
 }
 
 .product-img--features {
-  width: 220px;
-  height: 340px;
+  width: 180px;
+  height: 380px;
   transition: transform 0.1s linear;
 }
 
@@ -523,8 +522,8 @@ img, svg {
 }
 
 .features-product .product-img {
-  width: 220px;
-  height: 340px;
+  width: 180px;
+  height: 380px;
   transition: transform 0.1s linear;
 }
 
@@ -1415,13 +1414,13 @@ img, svg {
   }
 
   .product-img {
-    width: 140px;
-    height: 220px;
+    width: 120px;
+    height: 240px;
   }
 
   .product-img--features {
-    width: 180px;
-    height: 280px;
+    width: 140px;
+    height: 300px;
   }
 
   .exclamation-morph {
