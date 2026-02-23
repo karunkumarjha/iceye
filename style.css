@@ -378,8 +378,10 @@ img, svg {
 }
 
 .product-img--features {
-  width: 180px;
-  height: 380px;
+  width: 220px;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 12px;
   transition: transform 0.1s linear;
 }
 
@@ -522,8 +524,8 @@ img, svg {
 }
 
 .features-product .product-img {
-  width: 180px;
-  height: 380px;
+  width: 220px;
+  height: 340px;
   transition: transform 0.1s linear;
 }
 
@@ -1419,8 +1421,8 @@ img, svg {
   }
 
   .product-img--features {
-    width: 140px;
-    height: 300px;
+    width: 180px;
+    height: 280px;
   }
 
   .exclamation-morph {
