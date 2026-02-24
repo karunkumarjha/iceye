@@ -9,7 +9,7 @@
   // ---------- STATE ----------
   const state = {
     cart: JSON.parse(localStorage.getItem('iceye-cart') || '[]'),
-    soundEnabled: false,
+    soundEnabled: true,
     heroAnimationDone: false,
   };
 
@@ -504,12 +504,7 @@
 
   // ---------- CTA BUTTONS ----------
   function initCTAButtons() {
-    const addToCartBtn = $('#add-to-cart-btn');
-    if (addToCartBtn) {
-      addToCartBtn.addEventListener('click', () => {
-        addToCart();
-      });
-    }
+    // "Claim your spot" button uses buy-now-btn, handled by initPurchasePanel
   }
 
   // ---------- BASIC ANALYTICS ----------
@@ -558,13 +553,9 @@
     }, { passive: true });
 
     // Track CTA clicks
-    const addCartBtn = $('#add-to-cart-btn');
-    const buyNowBtn = $('#buy-now-btn');
-    if (addCartBtn) {
-      addCartBtn.addEventListener('click', () => trackEvent('add_to_cart'));
-    }
-    if (buyNowBtn) {
-      buyNowBtn.addEventListener('click', () => trackEvent('buy_now_click'));
+    const claimBtn = $('#buy-now-btn');
+    if (claimBtn) {
+      claimBtn.addEventListener('click', () => trackEvent('claim_your_spot_click'));
     }
   }
 
