@@ -621,10 +621,10 @@ img, svg { display: block; max-width: 100%; }
 }
 
 .shots-grid {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
 }
 
@@ -643,8 +643,12 @@ img, svg { display: block; max-width: 100%; }
 
 .shot-img {
   position: relative;
-  aspect-ratio: 3/4;
+  aspect-ratio: 3/2;
   overflow: hidden;
+}
+
+.shot-card:nth-child(2) .shot-img {
+  aspect-ratio: 3/4;
 }
 
 .shot-photo {
@@ -1306,8 +1310,7 @@ img, svg { display: block; max-width: 100%; }
   #cursor-glow { display: none; }
   #navbar { padding: 1rem 1.25rem; }
   .hero-headline { font-size: clamp(1.6rem, 7vw, 2.8rem); }
-  .shots-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-  .shot-img { aspect-ratio: 4/3; }
+  .shots-grid { gap: 1.5rem; }
   .testimonials-track { gap: 1rem; }
   .testimonial-card { flex: 0 0 260px; padding: 1.5rem; }
   .cta-buttons { flex-direction: column; align-items: center; }
